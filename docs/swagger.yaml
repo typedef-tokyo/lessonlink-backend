@@ -1,0 +1,1558 @@
+basePath: /
+definitions:
+  controller.InvisibleRoomSaveRequestData:
+    properties:
+      invisible_rooms:
+        items:
+          type: integer
+        type: array
+    required:
+    - invisible_rooms
+    type: object
+  controller.LessonAddRequestData:
+    properties:
+      duration:
+        type: integer
+      lesson_name:
+        type: string
+    required:
+    - duration
+    - lesson_name
+    type: object
+  controller.LessonEditRequestData:
+    properties:
+      duration:
+        type: integer
+      lesson_name:
+        type: string
+    required:
+    - duration
+    - lesson_name
+    type: object
+  controller.RoomEditData:
+    properties:
+      room_index:
+        type: integer
+      room_name:
+        type: string
+    required:
+    - room_index
+    - room_name
+    type: object
+  controller.RoomEditRequestData:
+    properties:
+      room_list:
+        items:
+          $ref: '#/definitions/controller.RoomEditData'
+        type: array
+    required:
+    - room_list
+    type: object
+  controller.ScheduleCreateRequestData:
+    properties:
+      end_time:
+        type: integer
+      start_time:
+        type: integer
+    required:
+    - end_time
+    - start_time
+    type: object
+  controller.ScheduleItemDivideRequestData:
+    properties:
+      divide_minutes:
+        type: integer
+      history_index:
+        type: integer
+      identifier:
+        type: string
+      lesson_id:
+        type: integer
+    required:
+    - divide_minutes
+    - history_index
+    - identifier
+    - lesson_id
+    type: object
+  controller.ScheduleItemJoinRequestData:
+    properties:
+      history_index:
+        type: integer
+      join_from_identifier:
+        type: string
+      join_to_identifier:
+        type: string
+    required:
+    - history_index
+    - join_from_identifier
+    - join_to_identifier
+    type: object
+  controller.ScheduleItemMoveRequestData:
+    properties:
+      duration:
+        type: integer
+      end_time_hour:
+        type: integer
+      end_time_minutes:
+        type: integer
+      history_index:
+        type: integer
+      identifier:
+        type: string
+      item_tag:
+        type: string
+      lesson_id:
+        type: integer
+      room_index:
+        type: integer
+      start_time_hour:
+        type: integer
+      start_time_minute:
+        type: integer
+    required:
+    - duration
+    - end_time_hour
+    - end_time_minutes
+    - history_index
+    - identifier
+    - item_tag
+    - lesson_id
+    - room_index
+    - start_time_hour
+    - start_time_minute
+    type: object
+  controller.ScheduleItemReturnListRequestData:
+    properties:
+      duration:
+        type: integer
+      history_index:
+        type: integer
+      identifier:
+        type: string
+      lesson_id:
+        type: integer
+    required:
+    - duration
+    - history_index
+    - identifier
+    - lesson_id
+    type: object
+  controller.ScheduleItemShiftRequestData:
+    properties:
+      history_index:
+        type: integer
+      room_index:
+        type: integer
+    required:
+    - history_index
+    - room_index
+    type: object
+  controller.ScheduleSaveRequestData:
+    properties:
+      history_index:
+        type: integer
+    required:
+    - history_index
+    type: object
+  controller.ScheduleSaveTitleRequestData:
+    properties:
+      title:
+        type: string
+    required:
+    - title
+    type: object
+  controller.ScheduleTimeEditRequestData:
+    properties:
+      end_time:
+        type: integer
+      start_time:
+        type: integer
+    required:
+    - end_time
+    - start_time
+    type: object
+  controller.UserAddRequestData:
+    properties:
+      confirm_password:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      role_key:
+        type: string
+      user_name:
+        type: string
+    required:
+    - confirm_password
+    - name
+    - password
+    - role_key
+    - user_name
+    type: object
+  controller.UserLoginParams:
+    properties:
+      password:
+        type: string
+      user_name:
+        type: string
+    required:
+    - password
+    - user_name
+    type: object
+  controller.UserUpdateRequestData:
+    properties:
+      confirm_password:
+        type: string
+      display_name:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      role_key:
+        type: string
+      user_name:
+        type: string
+    required:
+    - confirm_password
+    - display_name
+    - id
+    - password
+    - role_key
+    - user_name
+    type: object
+  presenter.CampusListDTO:
+    properties:
+      campus:
+        type: string
+      campus_name:
+        type: string
+    required:
+    - campus
+    - campus_name
+    type: object
+  presenter.CampusListResponse:
+    properties:
+      campuses:
+        items:
+          $ref: '#/definitions/presenter.CampusListDTO'
+        type: array
+      msg:
+        type: string
+    required:
+    - campuses
+    - msg
+    type: object
+  presenter.InvisibleRoomSaveResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.LessonAddResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.LessonEditResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.LessonListDTO:
+    properties:
+      id:
+        type: integer
+      lesson_duration:
+        type: integer
+      lesson_name:
+        type: string
+    required:
+    - id
+    - lesson_duration
+    - lesson_name
+    type: object
+  presenter.LessonListResponse:
+    properties:
+      lessons:
+        items:
+          $ref: '#/definitions/presenter.LessonListDTO'
+        type: array
+    required:
+    - lessons
+    type: object
+  presenter.LoginUserDTO:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      role_key:
+        type: string
+      user_name:
+        type: string
+    required:
+    - id
+    - name
+    - role_key
+    - user_name
+    type: object
+  presenter.RoomEditResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.RoomListDTO:
+    properties:
+      room_index:
+        type: integer
+      room_name:
+        type: string
+    required:
+    - room_index
+    - room_name
+    type: object
+  presenter.RoomListResponse:
+    properties:
+      rooms:
+        items:
+          $ref: '#/definitions/presenter.RoomListDTO'
+        type: array
+    required:
+    - rooms
+    type: object
+  presenter.ScheduleCreateResponse:
+    properties:
+      schedule_id:
+        type: integer
+    required:
+    - schedule_id
+    type: object
+  presenter.ScheduleGetResponse:
+    properties:
+      campus:
+        type: string
+      created_user_id:
+        type: integer
+      history_index:
+        type: integer
+      lesson_item_list:
+        items:
+          $ref: '#/definitions/presenter.ScheduleLessonItem'
+        type: array
+      room_lesson_list:
+        items:
+          $ref: '#/definitions/presenter.ScheduleRoomLesson'
+        type: array
+      rooms:
+        items:
+          $ref: '#/definitions/presenter.ScheduleRoomDTO'
+        type: array
+      schedule_end_time:
+        type: integer
+      schedule_id:
+        type: integer
+      schedule_start_time:
+        type: integer
+      title:
+        type: string
+    required:
+    - campus
+    - created_user_id
+    - history_index
+    - lesson_item_list
+    - room_lesson_list
+    - rooms
+    - schedule_end_time
+    - schedule_id
+    - schedule_start_time
+    - title
+    type: object
+  presenter.ScheduleItemEditLessonItem:
+    properties:
+      duration:
+        type: integer
+      identifier:
+        type: string
+      lesson_id:
+        type: integer
+      lesson_name:
+        type: string
+    required:
+    - duration
+    - identifier
+    - lesson_id
+    - lesson_name
+    type: object
+  presenter.ScheduleItemEditResponse:
+    properties:
+      history_index:
+        type: integer
+      lesson_item_list:
+        items:
+          $ref: '#/definitions/presenter.ScheduleItemEditLessonItem'
+        type: array
+      room_lesson_list:
+        items:
+          $ref: '#/definitions/presenter.ScheduleItemEditRoomLesson'
+        type: array
+    required:
+    - history_index
+    - lesson_item_list
+    - room_lesson_list
+    type: object
+  presenter.ScheduleItemEditRoomLesson:
+    properties:
+      duration:
+        type: integer
+      end_time_hour:
+        type: integer
+      end_time_minutes:
+        type: integer
+      identifier:
+        type: string
+      item_tag:
+        type: string
+      lesson_id:
+        type: integer
+      lesson_name:
+        type: string
+      room_index:
+        type: integer
+      start_time_hour:
+        type: integer
+      start_time_minutes:
+        type: integer
+    required:
+    - duration
+    - end_time_hour
+    - end_time_minutes
+    - identifier
+    - item_tag
+    - lesson_id
+    - lesson_name
+    - room_index
+    - start_time_hour
+    - start_time_minutes
+    type: object
+  presenter.ScheduleLessonItem:
+    properties:
+      duration:
+        type: integer
+      identifier:
+        type: string
+      lesson_id:
+        type: integer
+      lesson_name:
+        type: string
+    required:
+    - duration
+    - identifier
+    - lesson_id
+    - lesson_name
+    type: object
+  presenter.ScheduleListDTO:
+    properties:
+      created_user_id:
+        type: integer
+      created_user_name:
+        type: string
+      last_update_date_time:
+        type: string
+      last_update_user_name:
+        type: string
+      schedule_id:
+        type: integer
+      status:
+        type: string
+      title:
+        type: string
+    required:
+    - created_user_id
+    - created_user_name
+    - last_update_date_time
+    - last_update_user_name
+    - schedule_id
+    - status
+    - title
+    type: object
+  presenter.ScheduleListResponse:
+    properties:
+      schedules:
+        items:
+          $ref: '#/definitions/presenter.ScheduleListDTO'
+        type: array
+    required:
+    - schedules
+    type: object
+  presenter.ScheduleRoomDTO:
+    properties:
+      room_index:
+        type: integer
+      room_name:
+        type: string
+      visible:
+        type: boolean
+    required:
+    - room_index
+    - room_name
+    - visible
+    type: object
+  presenter.ScheduleRoomLesson:
+    properties:
+      duration:
+        type: integer
+      end_time_hour:
+        type: integer
+      end_time_minutes:
+        type: integer
+      identifier:
+        type: string
+      item_tag:
+        type: string
+      lesson_id:
+        type: integer
+      lesson_name:
+        type: string
+      room_index:
+        type: integer
+      start_time_hour:
+        type: integer
+      start_time_minutes:
+        type: integer
+    required:
+    - duration
+    - end_time_hour
+    - end_time_minutes
+    - identifier
+    - item_tag
+    - lesson_id
+    - lesson_name
+    - room_index
+    - start_time_hour
+    - start_time_minutes
+    type: object
+  presenter.ScheduleSaveResponse:
+    properties:
+      history_index:
+        type: integer
+      msg:
+        type: string
+    required:
+    - history_index
+    - msg
+    type: object
+  presenter.ScheduleSaveTitleResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.UserAddResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.UserDTO:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      role_name:
+        type: string
+      user_name:
+        type: string
+    required:
+    - id
+    - name
+    - role_name
+    - user_name
+    type: object
+  presenter.UserDeleteResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+  presenter.UserGetResponse:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      role_key:
+        type: string
+      user_name:
+        type: string
+    required:
+    - id
+    - name
+    - role_key
+    - user_name
+    type: object
+  presenter.UserListResponse:
+    properties:
+      users:
+        items:
+          $ref: '#/definitions/presenter.UserDTO'
+        type: array
+    required:
+    - users
+    type: object
+  presenter.UserLoginResponse:
+    properties:
+      login_user:
+        $ref: '#/definitions/presenter.LoginUserDTO'
+      msg:
+        type: string
+    required:
+    - login_user
+    - msg
+    type: object
+  presenter.UserUpdateResponse:
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+    type: object
+host: localhost:3002
+info:
+  contact: {}
+  description: lessonlink-backend バックエンドAPI
+  license:
+    name: typedef-tokyo.
+  title: lessonlink-backend
+  version: "1.0"
+paths:
+  /campus/list:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.CampusListResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: キャンパスリスト取得
+  /lesson/{campus}:
+    post:
+      parameters:
+      - description: 校舎
+        in: path
+        name: campus
+        required: true
+        type: string
+      - description: 講座追加リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.LessonAddRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.LessonAddResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 講座追加
+  /lesson/{campus}/list:
+    get:
+      parameters:
+      - description: 校舎
+        in: path
+        name: campus
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.LessonListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 講座一覧取得
+  /lesson/{lessonid}:
+    patch:
+      parameters:
+      - description: 講座
+        in: path
+        name: lessonid
+        required: true
+        type: string
+      - description: 講座編集リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.LessonEditRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.LessonEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 講座編集
+  /room/{campus}/edit:
+    post:
+      parameters:
+      - description: 校舎
+        in: path
+        name: campus
+        required: true
+        type: string
+      - description: 教室編集リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.RoomEditRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.RoomEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 教室編集
+  /room/{campus}/list:
+    get:
+      parameters:
+      - description: 校舎
+        in: path
+        name: campus
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.RoomListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 教室リスト取得
+  /schedule/{schedule_id}:
+    delete:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール削除
+    get:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: 履歴番号
+        in: query
+        name: history
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleGetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュールリスト取得
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: スケジュール保存リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleSaveRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleSaveResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール保存
+  /schedule/{schedule_id}/duplicate:
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール複製
+  /schedule/{schedule_id}/item-divide:
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: スケジュール保存リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleItemDivideRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleItemEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール編集アイテムリスト分割
+  /schedule/{schedule_id}/item-join:
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: アイテム結合リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleItemJoinRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleItemEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール編集アイテムリスト分割
+  /schedule/{schedule_id}/item-move:
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: アイテム移動リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleItemMoveRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleItemEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール編集アイテム移動
+  /schedule/{schedule_id}/item-return-list:
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: アイテムリスト移動リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleItemReturnListRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleItemEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール編集アイテムリスト移動
+  /schedule/{schedule_id}/item-shift:
+    post:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: アイテムシフトリクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleItemShiftRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleItemEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール編集アイテムシフト
+  /schedule/{schedule_id}/room/invisible:
+    put:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: 非表示ルームリクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.InvisibleRoomSaveRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.InvisibleRoomSaveResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 非表示ルーム登録
+  /schedule/{schedule_id}/time:
+    patch:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: スケジュール時間変更リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleTimeEditRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleItemEditResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール時間変更
+  /schedule/{schedule_id}/title:
+    patch:
+      parameters:
+      - description: ScheduleID
+        in: path
+        name: schedule_id
+        required: true
+        type: string
+      - description: タイトル保存リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleSaveTitleRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleSaveTitleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュールタイトル保存
+  /schedule/create/{campus}:
+    post:
+      parameters:
+      - description: 校舎
+        in: path
+        name: campus
+        required: true
+        type: string
+      - description: スケジュール作成リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.ScheduleCreateRequestData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleCreateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュール作成
+  /schedule/list/{campus}:
+    get:
+      parameters:
+      - description: 校舎
+        in: path
+        name: campus
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.ScheduleListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: スケジュールリスト取得
+  /user:
+    post:
+      parameters:
+      - description: ユーザー作成リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UserAddRequestData'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/presenter.UserAddResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "409":
+          description: Conflict
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザー追加
+    put:
+      parameters:
+      - description: ユーザー更新リクエスト
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UserUpdateRequestData'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/presenter.UserUpdateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザー更新
+  /user/{userid}:
+    delete:
+      parameters:
+      - description: UserID
+        in: path
+        name: userid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.UserDeleteResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザー削除
+    get:
+      parameters:
+      - description: UserID
+        in: path
+        name: userid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.UserGetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザー取得
+  /user/list:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.UserListResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザー一覧取得
+  /user/login:
+    post:
+      parameters:
+      - description: ユーザーログイン情報
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controller.UserLoginParams'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.UserLoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザーログイン
+  /user/logout:
+    post:
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ユーザーログアウト
+  /user/self:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/presenter.UserGetResponse'
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: ログインユーザー取得
+swagger: "2.0"

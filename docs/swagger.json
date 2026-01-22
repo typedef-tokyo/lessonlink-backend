@@ -1,0 +1,2342 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "lessonlink-backend バックエンドAPI",
+        "title": "lessonlink-backend",
+        "contact": {},
+        "license": {
+            "name": "typedef-tokyo."
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:3002",
+    "basePath": "/",
+    "paths": {
+        "/campus/list": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "キャンパスリスト取得",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.CampusListResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/lesson/{campus}": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "講座追加",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "校舎",
+                        "name": "campus",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "講座追加リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.LessonAddRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.LessonAddResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/lesson/{campus}/list": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "講座一覧取得",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "校舎",
+                        "name": "campus",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.LessonListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/lesson/{lessonid}": {
+            "patch": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "講座編集",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "講座",
+                        "name": "lessonid",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "講座編集リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.LessonEditRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.LessonEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/room/{campus}/edit": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "教室編集",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "校舎",
+                        "name": "campus",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "教室編集リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.RoomEditRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.RoomEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/room/{campus}/list": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "教室リスト取得",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "校舎",
+                        "name": "campus",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.RoomListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/create/{campus}": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール作成",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "校舎",
+                        "name": "campus",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "スケジュール作成リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleCreateRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleCreateResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/list/{campus}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュールリスト取得",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "校舎",
+                        "name": "campus",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュールリスト取得",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "履歴番号",
+                        "name": "history",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleGetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール保存",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "スケジュール保存リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleSaveRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleSaveResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール削除",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/duplicate": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール複製",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/item-divide": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール編集アイテムリスト分割",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "スケジュール保存リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleItemDivideRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleItemEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/item-join": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール編集アイテムリスト分割",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "アイテム結合リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleItemJoinRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleItemEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/item-move": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール編集アイテム移動",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "アイテム移動リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleItemMoveRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleItemEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/item-return-list": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール編集アイテムリスト移動",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "アイテムリスト移動リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleItemReturnListRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleItemEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/item-shift": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール編集アイテムシフト",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "アイテムシフトリクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleItemShiftRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleItemEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/room/invisible": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "非表示ルーム登録",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "非表示ルームリクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.InvisibleRoomSaveRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.InvisibleRoomSaveResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/time": {
+            "patch": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュール時間変更",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "スケジュール時間変更リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleTimeEditRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleItemEditResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/schedule/{schedule_id}/title": {
+            "patch": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "スケジュールタイトル保存",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "ScheduleID",
+                        "name": "schedule_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "タイトル保存リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.ScheduleSaveTitleRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.ScheduleSaveTitleResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザー更新",
+                "parameters": [
+                    {
+                        "description": "ユーザー更新リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.UserUpdateRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserUpdateResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザー追加",
+                "parameters": [
+                    {
+                        "description": "ユーザー作成リクエスト",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.UserAddRequestData"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserAddResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/list": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザー一覧取得",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザーログイン",
+                "parameters": [
+                    {
+                        "description": "ユーザーログイン情報",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controller.UserLoginParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserLoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/logout": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザーログアウト",
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/self": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ログインユーザー取得",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserGetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{userid}": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザー取得",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserID",
+                        "name": "userid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserGetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "ユーザー削除",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserID",
+                        "name": "userid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/presenter.UserDeleteResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controller.InvisibleRoomSaveRequestData": {
+            "type": "object",
+            "required": [
+                "invisible_rooms"
+            ],
+            "properties": {
+                "invisible_rooms": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "controller.LessonAddRequestData": {
+            "type": "object",
+            "required": [
+                "duration",
+                "lesson_name"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.LessonEditRequestData": {
+            "type": "object",
+            "required": [
+                "duration",
+                "lesson_name"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.RoomEditData": {
+            "type": "object",
+            "required": [
+                "room_index",
+                "room_name"
+            ],
+            "properties": {
+                "room_index": {
+                    "type": "integer"
+                },
+                "room_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.RoomEditRequestData": {
+            "type": "object",
+            "required": [
+                "room_list"
+            ],
+            "properties": {
+                "room_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/controller.RoomEditData"
+                    }
+                }
+            }
+        },
+        "controller.ScheduleCreateRequestData": {
+            "type": "object",
+            "required": [
+                "end_time",
+                "start_time"
+            ],
+            "properties": {
+                "end_time": {
+                    "type": "integer"
+                },
+                "start_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.ScheduleItemDivideRequestData": {
+            "type": "object",
+            "required": [
+                "divide_minutes",
+                "history_index",
+                "identifier",
+                "lesson_id"
+            ],
+            "properties": {
+                "divide_minutes": {
+                    "type": "integer"
+                },
+                "history_index": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.ScheduleItemJoinRequestData": {
+            "type": "object",
+            "required": [
+                "history_index",
+                "join_from_identifier",
+                "join_to_identifier"
+            ],
+            "properties": {
+                "history_index": {
+                    "type": "integer"
+                },
+                "join_from_identifier": {
+                    "type": "string"
+                },
+                "join_to_identifier": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.ScheduleItemMoveRequestData": {
+            "type": "object",
+            "required": [
+                "duration",
+                "end_time_hour",
+                "end_time_minutes",
+                "history_index",
+                "identifier",
+                "item_tag",
+                "lesson_id",
+                "room_index",
+                "start_time_hour",
+                "start_time_minute"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "end_time_hour": {
+                    "type": "integer"
+                },
+                "end_time_minutes": {
+                    "type": "integer"
+                },
+                "history_index": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "item_tag": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                },
+                "room_index": {
+                    "type": "integer"
+                },
+                "start_time_hour": {
+                    "type": "integer"
+                },
+                "start_time_minute": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.ScheduleItemReturnListRequestData": {
+            "type": "object",
+            "required": [
+                "duration",
+                "history_index",
+                "identifier",
+                "lesson_id"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "history_index": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.ScheduleItemShiftRequestData": {
+            "type": "object",
+            "required": [
+                "history_index",
+                "room_index"
+            ],
+            "properties": {
+                "history_index": {
+                    "type": "integer"
+                },
+                "room_index": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.ScheduleSaveRequestData": {
+            "type": "object",
+            "required": [
+                "history_index"
+            ],
+            "properties": {
+                "history_index": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.ScheduleSaveTitleRequestData": {
+            "type": "object",
+            "required": [
+                "title"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.ScheduleTimeEditRequestData": {
+            "type": "object",
+            "required": [
+                "end_time",
+                "start_time"
+            ],
+            "properties": {
+                "end_time": {
+                    "type": "integer"
+                },
+                "start_time": {
+                    "type": "integer"
+                }
+            }
+        },
+        "controller.UserAddRequestData": {
+            "type": "object",
+            "required": [
+                "confirm_password",
+                "name",
+                "password",
+                "role_key",
+                "user_name"
+            ],
+            "properties": {
+                "confirm_password": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role_key": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.UserLoginParams": {
+            "type": "object",
+            "required": [
+                "password",
+                "user_name"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "controller.UserUpdateRequestData": {
+            "type": "object",
+            "required": [
+                "confirm_password",
+                "display_name",
+                "id",
+                "password",
+                "role_key",
+                "user_name"
+            ],
+            "properties": {
+                "confirm_password": {
+                    "type": "string"
+                },
+                "display_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role_key": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.CampusListDTO": {
+            "type": "object",
+            "required": [
+                "campus",
+                "campus_name"
+            ],
+            "properties": {
+                "campus": {
+                    "type": "string"
+                },
+                "campus_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.CampusListResponse": {
+            "type": "object",
+            "required": [
+                "campuses",
+                "msg"
+            ],
+            "properties": {
+                "campuses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.CampusListDTO"
+                    }
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.InvisibleRoomSaveResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.LessonAddResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.LessonEditResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.LessonListDTO": {
+            "type": "object",
+            "required": [
+                "id",
+                "lesson_duration",
+                "lesson_name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "lesson_duration": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.LessonListResponse": {
+            "type": "object",
+            "required": [
+                "lessons"
+            ],
+            "properties": {
+                "lessons": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.LessonListDTO"
+                    }
+                }
+            }
+        },
+        "presenter.LoginUserDTO": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "role_key",
+                "user_name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role_key": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.RoomEditResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.RoomListDTO": {
+            "type": "object",
+            "required": [
+                "room_index",
+                "room_name"
+            ],
+            "properties": {
+                "room_index": {
+                    "type": "integer"
+                },
+                "room_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.RoomListResponse": {
+            "type": "object",
+            "required": [
+                "rooms"
+            ],
+            "properties": {
+                "rooms": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.RoomListDTO"
+                    }
+                }
+            }
+        },
+        "presenter.ScheduleCreateResponse": {
+            "type": "object",
+            "required": [
+                "schedule_id"
+            ],
+            "properties": {
+                "schedule_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "presenter.ScheduleGetResponse": {
+            "type": "object",
+            "required": [
+                "campus",
+                "created_user_id",
+                "history_index",
+                "lesson_item_list",
+                "room_lesson_list",
+                "rooms",
+                "schedule_end_time",
+                "schedule_id",
+                "schedule_start_time",
+                "title"
+            ],
+            "properties": {
+                "campus": {
+                    "type": "string"
+                },
+                "created_user_id": {
+                    "type": "integer"
+                },
+                "history_index": {
+                    "type": "integer"
+                },
+                "lesson_item_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.ScheduleLessonItem"
+                    }
+                },
+                "room_lesson_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.ScheduleRoomLesson"
+                    }
+                },
+                "rooms": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.ScheduleRoomDTO"
+                    }
+                },
+                "schedule_end_time": {
+                    "type": "integer"
+                },
+                "schedule_id": {
+                    "type": "integer"
+                },
+                "schedule_start_time": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.ScheduleItemEditLessonItem": {
+            "type": "object",
+            "required": [
+                "duration",
+                "identifier",
+                "lesson_id",
+                "lesson_name"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.ScheduleItemEditResponse": {
+            "type": "object",
+            "required": [
+                "history_index",
+                "lesson_item_list",
+                "room_lesson_list"
+            ],
+            "properties": {
+                "history_index": {
+                    "type": "integer"
+                },
+                "lesson_item_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.ScheduleItemEditLessonItem"
+                    }
+                },
+                "room_lesson_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.ScheduleItemEditRoomLesson"
+                    }
+                }
+            }
+        },
+        "presenter.ScheduleItemEditRoomLesson": {
+            "type": "object",
+            "required": [
+                "duration",
+                "end_time_hour",
+                "end_time_minutes",
+                "identifier",
+                "item_tag",
+                "lesson_id",
+                "lesson_name",
+                "room_index",
+                "start_time_hour",
+                "start_time_minutes"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "end_time_hour": {
+                    "type": "integer"
+                },
+                "end_time_minutes": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "item_tag": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                },
+                "room_index": {
+                    "type": "integer"
+                },
+                "start_time_hour": {
+                    "type": "integer"
+                },
+                "start_time_minutes": {
+                    "type": "integer"
+                }
+            }
+        },
+        "presenter.ScheduleLessonItem": {
+            "type": "object",
+            "required": [
+                "duration",
+                "identifier",
+                "lesson_id",
+                "lesson_name"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.ScheduleListDTO": {
+            "type": "object",
+            "required": [
+                "created_user_id",
+                "created_user_name",
+                "last_update_date_time",
+                "last_update_user_name",
+                "schedule_id",
+                "status",
+                "title"
+            ],
+            "properties": {
+                "created_user_id": {
+                    "type": "integer"
+                },
+                "created_user_name": {
+                    "type": "string"
+                },
+                "last_update_date_time": {
+                    "type": "string"
+                },
+                "last_update_user_name": {
+                    "type": "string"
+                },
+                "schedule_id": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.ScheduleListResponse": {
+            "type": "object",
+            "required": [
+                "schedules"
+            ],
+            "properties": {
+                "schedules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.ScheduleListDTO"
+                    }
+                }
+            }
+        },
+        "presenter.ScheduleRoomDTO": {
+            "type": "object",
+            "required": [
+                "room_index",
+                "room_name",
+                "visible"
+            ],
+            "properties": {
+                "room_index": {
+                    "type": "integer"
+                },
+                "room_name": {
+                    "type": "string"
+                },
+                "visible": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "presenter.ScheduleRoomLesson": {
+            "type": "object",
+            "required": [
+                "duration",
+                "end_time_hour",
+                "end_time_minutes",
+                "identifier",
+                "item_tag",
+                "lesson_id",
+                "lesson_name",
+                "room_index",
+                "start_time_hour",
+                "start_time_minutes"
+            ],
+            "properties": {
+                "duration": {
+                    "type": "integer"
+                },
+                "end_time_hour": {
+                    "type": "integer"
+                },
+                "end_time_minutes": {
+                    "type": "integer"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "item_tag": {
+                    "type": "string"
+                },
+                "lesson_id": {
+                    "type": "integer"
+                },
+                "lesson_name": {
+                    "type": "string"
+                },
+                "room_index": {
+                    "type": "integer"
+                },
+                "start_time_hour": {
+                    "type": "integer"
+                },
+                "start_time_minutes": {
+                    "type": "integer"
+                }
+            }
+        },
+        "presenter.ScheduleSaveResponse": {
+            "type": "object",
+            "required": [
+                "history_index",
+                "msg"
+            ],
+            "properties": {
+                "history_index": {
+                    "type": "integer"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.ScheduleSaveTitleResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.UserAddResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.UserDTO": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "role_name",
+                "user_name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.UserDeleteResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.UserGetResponse": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "role_key",
+                "user_name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role_key": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.UserListResponse": {
+            "type": "object",
+            "required": [
+                "users"
+            ],
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/presenter.UserDTO"
+                    }
+                }
+            }
+        },
+        "presenter.UserLoginResponse": {
+            "type": "object",
+            "required": [
+                "login_user",
+                "msg"
+            ],
+            "properties": {
+                "login_user": {
+                    "$ref": "#/definitions/presenter.LoginUserDTO"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "presenter.UserUpdateResponse": {
+            "type": "object",
+            "required": [
+                "msg"
+            ],
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

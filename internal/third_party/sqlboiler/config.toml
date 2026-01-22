@@ -1,0 +1,13 @@
+no-tests = true
+pkgname = "dto"
+output="./infrastructure/database/rdb/dto"
+no-auto-timestamps = true
+
+[mysql]
+  dbname   = "lessonlink"
+  host     = "mysql"
+  port     = 3306
+  user     = "root"
+  pass     = "root"
+  sslmode  = "false"
+  blacklist= ["schema_migrations"]
