@@ -1,0 +1,29 @@
+{
+  "http_status": 200,
+  "_ignore": [
+    "lesson_item_list.[].identifier"
+  ],
+  "history_index": 3,
+  "lesson_item_list": [
+    {
+      "lesson_id": 2,
+      "identifier": "identifier_lesson_2",
+      "lesson_name": "Java入門",
+      "duration": 120
+    }
+  ],
+  "room_lesson_list": [
+    {
+      "item_tag": "lesson",
+      "lesson_id": 1,
+      "identifier": "identifier_lesson_1",
+      "lesson_name": "Golang入門",
+      "duration": 60,
+      "start_time_hour": 10,
+      "start_time_minutes": 5,
+      "end_time_hour": 11,
+      "end_time_minutes": 5,
+      "room_index": 2
+    }
+  ]
+}

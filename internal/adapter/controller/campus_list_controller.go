@@ -36,8 +36,8 @@ func NewCampusListController(
 // @Description
 // @Produce json
 // @Success 200 {object} presenter.CampusListResponse
-// @Failure 401 {object} string
-// @Failure 500 {object} string
+// @Failure 401 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /campus/list [get]
 func (h *CampusListController) Execute(c echo.Context) error {
 

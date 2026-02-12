@@ -43,13 +43,13 @@ type (
 // @Summary スケジュールタイトル保存
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
+// @Param schedule_id path int true "ScheduleID"
 // @Param request body ScheduleSaveTitleRequestData true "タイトル保存リクエスト"
 // @Success 200 {object} presenter.ScheduleSaveTitleResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id}/title [patch]
 func (h *ScheduleSaveTitleController) Execute(c echo.Context) error {
 

@@ -1,0 +1,37 @@
+{
+  "comment": "正常系：ルーム登録",
+    "room_list": [
+    {
+      "room_index": 1,
+      "room_name": "IT実践実習室"
+    },
+    {
+      "room_index": 2,
+      "room_name": "ビジネス・ディスカッション室"
+    },
+    {
+      "room_index": 3,
+      "room_name": "汎用座学講座室"
+    },
+    {
+      "room_index": 4,
+      "room_name": "クリエイティブ・ラボ"
+    },
+    {
+      "room_index": 5,
+      "room_name": "グローバル・コミュニケーション・ブース"
+    },
+    {
+      "room_index": 6,
+      "room_name": "マネジメント・演習室"
+    },
+    {
+      "room_index": 7,
+      "room_name": "大講義室"
+    },
+    {
+      "room_index": 8,
+      "room_name": "フォーカス・セミナールーム"
+    }
+  ]
+}

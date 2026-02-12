@@ -8,6 +8,7 @@ import (
 )
 
 var ErrCampusEmpty = errors.New("キャンパス識別子が未設定です")
+var ErrCampusInvalid = errors.New("キャンパス識別子が不正です")
 
 type Campus string
 
@@ -20,6 +21,11 @@ func NewCampus(key string) (Campus, error) {
 	key = strings.TrimSpace(key)
 	if key == "" {
 		return CAMPUS_INVALID, log.WrapErrorWithStackTraceBadRequest(ErrCampusEmpty)
+	}
+
+	const MAX_LENGTH = 16
+	if len(key) > MAX_LENGTH {
+		return CAMPUS_INVALID, log.WrapErrorWithStackTraceBadRequest(ErrCampusInvalid)
 	}
 
 	return Campus(key), nil

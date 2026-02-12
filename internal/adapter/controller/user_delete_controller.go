@@ -39,10 +39,10 @@ func NewUserDeleteController(
 // @Produce json
 // @Param userid path string true "UserID"
 // @Success 200 {object} presenter.UserDeleteResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /user/{userid} [delete]
 func (h *UserDeleteController) Execute(c echo.Context) error {
 

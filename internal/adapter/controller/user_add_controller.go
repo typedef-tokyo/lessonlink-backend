@@ -48,10 +48,10 @@ type (
 // @Produce json
 // @Param request body UserAddRequestData true "ユーザー作成リクエスト"
 // @Success 201 {object} presenter.UserAddResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 409 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 409 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /user [post]
 func (h *UserAddController) Execute(c echo.Context) error {
 

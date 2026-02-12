@@ -1,0 +1,25 @@
+{
+  "http_status": 200,
+  "_ignore": [
+    "schedules.[].title",
+    "schedules.[].last_update_date_time"
+  ],
+  "schedules": [
+    {
+      "schedule_id": 2,
+      "title": "比較対象外",
+      "created_user_name": "admin",
+      "last_update_user_name": "admin",
+      "last_update_date_time": "2026-02-08T18:00:00+09:00",
+      "created_user_id": 1
+    },
+    {
+      "schedule_id": 1,
+      "title": "比較対象外",
+      "created_user_name": "admin",
+      "last_update_user_name": "admin",
+      "last_update_date_time": "2026-02-09T10:30:00+09:00",
+      "created_user_id": 1
+    }
+  ]
+}

@@ -40,13 +40,13 @@ type (
 // @Summary スケジュール時間変更
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
+// @Param schedule_id path int true "ScheduleID"
 // @Param request body ScheduleTimeEditRequestData true "スケジュール時間変更リクエスト"
-// @Success 200 {object} presenter.ScheduleItemEditResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Success 204 {object} presenter.ScheduleItemEditResponse
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id}/time [patch]
 func (h *ScheduleTimeEditController) Execute(c echo.Context) error {
 
@@ -84,5 +84,5 @@ func (h *ScheduleTimeEditController) Execute(c echo.Context) error {
 		})
 	}
 
-	return c.NoContent(http.StatusOK)
+	return c.NoContent(http.StatusNoContent)
 }

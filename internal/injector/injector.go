@@ -240,6 +240,22 @@ func RunInjectedServer() error {
 
 	go func() {
 		err := DIContainer.Invoke(func(e *echo.Echo, env envcfg.EnvConfig, mysql rdb.IMySQL) error {
+
+			e.HTTPErrorHandler = func(err error, c echo.Context) {
+				if he, ok := err.(*echo.HTTPError); ok {
+					if he.Code == http.StatusNotFound && c.Path() != "" {
+
+						// このルートはGETのみ許可
+						c.Response().Header().Set(echo.HeaderAllow, http.MethodGet)
+						_ = c.JSON(http.StatusMethodNotAllowed, map[string]string{
+							"message": "Method Not Allowed",
+						})
+						return
+					}
+				}
+				e.DefaultHTTPErrorHandler(err, c)
+			}
+
 			e.Routes()
 			dbConn = mysql.GetConn()
 

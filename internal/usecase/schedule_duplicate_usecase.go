@@ -49,6 +49,10 @@ func (r ScheduleDuplicateInteractor) Execute(ctx context.Context, roleKey vo.Rol
 		return log.WrapErrorWithStackTrace(err)
 	}
 
+	if schedule == nil {
+		return log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", duplicateScheduleID.Value()))
+	}
+
 	duplicateSchedule := schedule.Duplicate(duplicateUser)
 
 	err = r.txManager.Do(ctx, func(tx *sql.Tx) error {

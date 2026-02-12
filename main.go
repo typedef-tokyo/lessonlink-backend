@@ -21,10 +21,14 @@ func main() {
 
 	// ローカル実行の場合のみ
 	environment := os.Getenv("ENVIRONMENT")
-	if environment == "local" {
+	if environment == "local" || environment == "local_test" {
 		err := godotenv.Overload("./internal/configs/.env")
 		if err != nil {
 			log.Fatalf("Error loading .env file")
+		}
+
+		if environment == "local_test" {
+			os.Setenv("DB_NAME", os.Getenv("TEST_DB_NAME"))
 		}
 	}
 

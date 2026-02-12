@@ -1,0 +1,13 @@
+{
+  "comment": "正常系：スケジュール編集アイテム移動",
+  "history_index": 2,
+  "lesson_id": 1,
+  "item_tag": "lesson",
+  "identifier": "identifier_lesson_1",
+  "duration": 60,
+  "start_time_hour": 10,
+  "start_time_minute": 5,
+  "end_time_hour": 11,
+  "end_time_minutes": 5,
+  "room_index": 2
+}

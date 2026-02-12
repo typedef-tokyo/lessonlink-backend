@@ -45,6 +45,7 @@ func NewUserLogoutController(
 // @Description
 // @Produce json
 // @Success 204 {string} string ""
+// @Failure 401 {object} map[string]string
 // @Failure 500 {object} string
 // @Router /user/logout [post]
 func (h *UserLogoutController) Execute(c echo.Context) error {

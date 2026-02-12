@@ -43,13 +43,13 @@ type (
 // @Summary 非表示ルーム登録
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
+// @Param schedule_id path int true "ScheduleID"
 // @Param request body InvisibleRoomSaveRequestData true "非表示ルームリクエスト"
 // @Success 200 {object} presenter.InvisibleRoomSaveResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id}/room/invisible [put]
 func (h *InvisibleRoomController) Execute(c echo.Context) error {
 

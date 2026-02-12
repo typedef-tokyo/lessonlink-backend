@@ -1,0 +1,71 @@
+{
+  "http_status": 200,
+  "_ignore": [
+    "title",
+    "lesson_item_list.[].identifier"
+  ],
+  "schedule_id": 1,
+  "campus": "shibuya",
+  "title": "20260209_1446_スケジュール",
+  "schedule_start_time": 9,
+  "schedule_end_time": 22,
+  "history_index": 1,
+  "rooms": [
+    {
+      "room_index": 1,
+      "room_name": "IT実践実習室",
+      "visible": true
+    },
+    {
+      "room_index": 2,
+      "room_name": "ビジネス・ディスカッション室",
+      "visible": true
+    },
+    {
+      "room_index": 3,
+      "room_name": "汎用座学講座室",
+      "visible": true
+    },
+    {
+      "room_index": 4,
+      "room_name": "クリエイティブ・ラボ",
+      "visible": true
+    },
+    {
+      "room_index": 5,
+      "room_name": "グローバル・コミュニケーション・ブース",
+      "visible": true
+    },
+    {
+      "room_index": 6,
+      "room_name": "マネジメント・演習室",
+      "visible": true
+    },
+    {
+      "room_index": 7,
+      "room_name": "大講義室",
+      "visible": true
+    },
+    {
+      "room_index": 8,
+      "room_name": "フォーカス・セミナールーム",
+      "visible": true
+    }
+  ],
+  "lesson_item_list": [
+    {
+      "lesson_id": 1,
+      "identifier": "b15fdd96-7bb6-468c-8e91-78fa44ee3ff1",
+      "lesson_name": "Golang入門",
+      "duration": 60
+    },
+    {
+      "lesson_id": 2,
+      "identifier": "8d486b08-de0c-45b7-8c07-587ad1a36944",
+      "lesson_name": "Java入門",
+      "duration": 120
+    }
+  ],
+  "room_lesson_list": [],
+  "created_user_id": 1
+}

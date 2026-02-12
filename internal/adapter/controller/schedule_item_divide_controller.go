@@ -46,13 +46,13 @@ type (
 // @Summary スケジュール編集アイテムリスト分割
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
+// @Param schedule_id path int true "ScheduleID"
 // @Param request body ScheduleItemDivideRequestData true "スケジュール保存リクエスト"
 // @Success 200 {object} presenter.ScheduleItemEditResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id}/item-divide [post]
 func (h *ScheduleItemDivideController) Execute(c echo.Context) error {
 

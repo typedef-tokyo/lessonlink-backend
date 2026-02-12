@@ -46,10 +46,10 @@ type (
 // @Param campus path string true "校舎"
 // @Param request body LessonAddRequestData true "講座追加リクエスト"
 // @Success 200 {object} presenter.LessonAddResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /lesson/{campus} [post]
 func (h *LessonAddController) Execute(c echo.Context) error {
 

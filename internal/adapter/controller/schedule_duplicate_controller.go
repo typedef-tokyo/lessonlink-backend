@@ -33,12 +33,12 @@ func NewScheduleDuplicateController(
 // @Summary スケジュール複製
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
+// @Param schedule_id path int true "ScheduleID"
 // @Success 204
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id}/duplicate [post]
 func (h *ScheduleDuplicateController) Execute(c echo.Context) error {
 

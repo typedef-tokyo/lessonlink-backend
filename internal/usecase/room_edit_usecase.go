@@ -34,18 +34,21 @@ type (
 
 type (
 	RoomEditInteractor struct {
-		txManager      util.TxManager
-		repositoryRoom repository.RoomRepository
+		txManager        util.TxManager
+		repositoryRoom   repository.RoomRepository
+		repositoryCampus repository.CampusRepository
 	}
 )
 
 func NewRoomEditInteractor(
 	txManager util.TxManager,
 	repositoryRoom repository.RoomRepository,
+	repositoryCampus repository.CampusRepository,
 ) IRoomEditInputPort {
 	return &RoomEditInteractor{
-		txManager:      txManager,
-		repositoryRoom: repositoryRoom,
+		txManager:        txManager,
+		repositoryRoom:   repositoryRoom,
+		repositoryCampus: repositoryCampus,
 	}
 }
 
@@ -58,6 +61,15 @@ func (r RoomEditInteractor) Execute(ctx context.Context, role vo.RoleKey, inputC
 	campus, roomSlice, err := r.createModel(inputCampus, editRoom)
 	if err != nil {
 		return log.WrapErrorWithStackTrace(err)
+	}
+
+	campuses, err := r.repositoryCampus.FindAll(ctx)
+	if err != nil {
+		return log.WrapErrorWithStackTrace(err)
+	}
+
+	if !campuses.IsExist(campus) {
+		return log.WrapErrorWithStackTraceNotFound(log.Errorf("指定した校舎はありません:%s", campus.Value()))
 	}
 
 	if !roomSlice.IsUniq() {

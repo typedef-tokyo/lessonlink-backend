@@ -57,6 +57,10 @@ func (r InvisibleRoomSaveInteractor) Execute(ctx context.Context, role vo.RoleKe
 		return log.WrapErrorWithStackTrace(err)
 	}
 
+	if scheduleData == nil {
+		return log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", scheduleID.Value()))
+	}
+
 	editUser, err := r.repositoryUser.FindByUserID(ctx, inputUserID)
 	if err != nil {
 		return log.WrapErrorWithStackTrace(err)

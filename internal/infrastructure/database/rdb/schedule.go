@@ -165,7 +165,7 @@ func (f *Schedule) findByIDWithHistoryIndex(ctx context.Context, tx *sql.Tx, sch
 		scheduleRecords, err = query.One(ctx, tx)
 	}
 
-	if err != nil {
+	if err != nil && err != sql.ErrNoRows {
 		return nil, log.WrapErrorWithStackTraceInternalServerError(err)
 	}
 
@@ -261,6 +261,10 @@ func (f *Schedule) FindByID(ctx context.Context, scheduleID vo.ScheduleID) (*sch
 	scheduleDTO, err := f.findByID(ctx, scheduleID)
 	if err != nil {
 		return nil, log.WrapErrorWithStackTrace(err)
+	}
+
+	if scheduleDTO == nil {
+		return nil, nil
 	}
 
 	historyIndex, err := vo.NewHistoryIndex(scheduleDTO.HistoryIndex)

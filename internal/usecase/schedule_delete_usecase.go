@@ -52,6 +52,10 @@ func (r ScheduleDeleteInteractor) Execute(ctx context.Context, role vo.RoleKey, 
 		return log.WrapErrorWithStackTrace(err)
 	}
 
+	if schedule == nil {
+		return log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", scheduleID.Value()))
+	}
+
 	deleteUser, err := r.repositoryUser.FindByUserID(ctx, inputDeleteUserID)
 	if err != nil {
 		return log.WrapErrorWithStackTrace(err)

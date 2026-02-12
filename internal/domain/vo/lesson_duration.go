@@ -7,7 +7,7 @@ import (
 	"github.com/typedef-tokyo/lessonlink-backend/internal/pkg/log"
 )
 
-var ErrItemLessonDurationUnderMin = errors.New("講座時間は0分以上を設定する必要があります。")
+var ErrItemLessonDurationUnderMin = errors.New("講座時間は1分以上を設定する必要があります。")
 var ErrItemLessonDurationOverMax = errors.New("講座時間に設定できる時間を超えています")
 var ErrItemLessonDurationRangeOver = errors.New("分割時間が講座時間の範囲外です")
 
@@ -19,7 +19,7 @@ const (
 
 func NewLessonDuration(duration int) (LessonDuration, error) {
 
-	if duration < 0 {
+	if duration < 1 {
 		return LESSON_DURATION_INVALID, log.WrapErrorWithStackTrace(ErrItemLessonDurationUnderMin)
 	}
 

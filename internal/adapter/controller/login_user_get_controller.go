@@ -37,9 +37,9 @@ func NewLoginUserGetController(
 // @Description
 // @Produce json
 // @Success 200 {object} presenter.UserGetResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /user/self [get]
 func (h *LoginUserGetController) Execute(c echo.Context) error {
 

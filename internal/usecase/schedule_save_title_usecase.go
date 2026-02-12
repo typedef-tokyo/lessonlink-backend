@@ -77,6 +77,10 @@ func (r ScheduleSaveTitleInteractor) getSchedule(ctx context.Context, tx *sql.Tx
 		return nil, log.WrapErrorWithStackTrace(err)
 	}
 
+	if scheduleData == nil {
+		return nil, log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", scheduleID.Value()))
+	}
+
 	editUser, err := r.repositoryUser.FindByUserID(ctx, user)
 	if err != nil {
 		return nil, log.WrapErrorWithStackTrace(err)

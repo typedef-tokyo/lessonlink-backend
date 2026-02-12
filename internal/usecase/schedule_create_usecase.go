@@ -78,7 +78,7 @@ func (r ScheduleCreateInteractor) Execute(
 	)
 
 	if err != nil {
-		return nil, log.WrapErrorWithStackTrace(err)
+		return nil, log.WrapErrorWithStackTraceBadRequest(err)
 	}
 
 	campuses, err := r.repositoryCampus.FindAll(ctx)

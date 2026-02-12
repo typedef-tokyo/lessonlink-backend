@@ -9,7 +9,6 @@ type QueryScheduleDTO struct {
 	ID                 int
 	Campus             string
 	Title              string
-	Status             string
 	CreateUserName     string
 	LastUpdateUserName string
 	CreateUser         int

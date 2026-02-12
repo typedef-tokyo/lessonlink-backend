@@ -36,13 +36,13 @@ func NewScheduleGetController(
 // @Summary スケジュールリスト取得
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
-// @Param history query string false  "履歴番号"
+// @Param schedule_id path int true "ScheduleID"
+// @Param history query int false "履歴番号"
 // @Success 200 {object} presenter.ScheduleGetResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id} [get]
 func (h *ScheduleGetController) Execute(c echo.Context) error {
 

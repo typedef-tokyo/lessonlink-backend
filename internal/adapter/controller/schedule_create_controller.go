@@ -46,10 +46,10 @@ type (
 // @Param campus path string true "校舎"
 // @Param request body ScheduleCreateRequestData true "スケジュール作成リクエスト"
 // @Success 200 {object} presenter.ScheduleCreateResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/create/{campus} [post]
 func (h *ScheduleCreateController) Execute(c echo.Context) error {
 

@@ -38,10 +38,10 @@ func NewUserGetController(
 // @Produce json
 // @Param userid path string true "UserID"
 // @Success 200 {object} presenter.UserGetResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /user/{userid} [get]
 func (h *UserGetController) Execute(c echo.Context) error {
 

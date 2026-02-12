@@ -45,13 +45,13 @@ type (
 // @Summary スケジュール編集アイテムリスト分割
 // @Description
 // @Produce json
-// @Param schedule_id path string true "ScheduleID"
+// @Param schedule_id path int true "ScheduleID"
 // @Param request body ScheduleItemJoinRequestData true "アイテム結合リクエスト"
 // @Success 200 {object} presenter.ScheduleItemEditResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /schedule/{schedule_id}/item-join [post]
 func (h *ScheduleItemJoinController) Execute(c echo.Context) error {
 

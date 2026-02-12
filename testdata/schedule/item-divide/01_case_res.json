@@ -1,0 +1,25 @@
+{
+  "http_status": 200,
+  "_ignore": [
+    "lesson_item_list.[].identifier"
+  ],
+  "history_index": 5,
+  "lesson_item_list": [
+    {
+      "duration": 120,
+      "lesson_id": 2,
+      "lesson_name": "Java入門"
+    },
+    {
+      "duration": 30,
+      "lesson_id": 1,
+      "lesson_name": "Golang入門"
+    },
+    {
+      "duration": 30,
+      "lesson_id": 1,
+      "lesson_name": "Golang入門"
+    }
+  ],
+  "room_lesson_list": []
+}

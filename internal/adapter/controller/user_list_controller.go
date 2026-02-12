@@ -37,9 +37,9 @@ func NewUserListController(
 // @Description
 // @Produce json
 // @Success 200 {object} presenter.UserListResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /user/list [get]
 func (h *UserListController) Execute(c echo.Context) error {
 

@@ -48,9 +48,9 @@ type UserLoginParams struct {
 // @Produce json
 // @Param request body controller.UserLoginParams true "ユーザーログイン情報"
 // @Success 200 {object} presenter.UserLoginResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} presenter.UserLoginResponse
+// @Failure 401 {object} presenter.UserLoginResponse
+// @Failure 500 {object} presenter.UserLoginResponse
 // @Router /user/login [post]
 func (h *UserLoginController) Execute(c echo.Context) error {
 

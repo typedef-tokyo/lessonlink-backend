@@ -37,10 +37,10 @@ func NewLessonListController(
 // @Produce json
 // @Param campus path string true "校舎"
 // @Success 200 {object} presenter.LessonListResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /lesson/{campus}/list [get]
 func (h *LessonListController) Execute(c echo.Context) error {
 

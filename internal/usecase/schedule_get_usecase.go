@@ -97,11 +97,20 @@ func (r ScheduleGetInteractor) Execute(ctx context.Context, inputScheduleID int,
 		if err != nil {
 			return nil, log.WrapErrorWithStackTrace(err)
 		}
+
+		if scheduleData == nil {
+			return nil, log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", scheduleID.Value()))
+		}
+
 		setHistoryIndex = scheduleData.HistoryIndex()
 	} else {
 		scheduleData, err = r.repositorySchedule.FindByIDWithHistoryIndex(ctx, scheduleID, historyIndex)
 		if err != nil {
 			return nil, log.WrapErrorWithStackTrace(err)
+		}
+
+		if scheduleData == nil {
+			return nil, log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", scheduleID.Value()))
 		}
 		setHistoryIndex = historyIndex
 	}

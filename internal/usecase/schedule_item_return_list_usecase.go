@@ -77,6 +77,10 @@ func (r ScheduleItemReturnListInteractor) Execute(ctx context.Context, role vo.R
 			return log.WrapErrorWithStackTrace(err)
 		}
 
+		if scheduleData == nil {
+			return log.WrapErrorWithStackTraceNotFound(log.Errorf("指定したIDのスケジュールは存在しません:%d", scheduleID.Value()))
+		}
+
 		lessons, err = r.repositoryLesson.FindByCampus(ctx, scheduleData.Campus())
 		if err != nil {
 			return log.WrapErrorWithStackTrace(err)

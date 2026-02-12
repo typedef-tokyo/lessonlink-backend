@@ -51,10 +51,10 @@ type (
 // @Param campus path string true "校舎"
 // @Param request body RoomEditRequestData true "教室編集リクエスト"
 // @Success 200 {object} presenter.RoomEditResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /room/{campus}/edit [post]
 func (h *RoomEditController) Execute(c echo.Context) error {
 

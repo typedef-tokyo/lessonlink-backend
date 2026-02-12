@@ -47,10 +47,10 @@ type (
 // @Param lessonid path string true "講座"
 // @Param request body LessonEditRequestData true "講座編集リクエスト"
 // @Success 200 {object} presenter.LessonEditResponse
-// @Failure 400 {object} string
-// @Failure 401 {object} string
-// @Failure 404 {object} string
-// @Failure 500 {object} string
+// @Failure 400 {object} map[string]string
+// @Failure 401 {object} map[string]string
+// @Failure 404 {object} map[string]string
+// @Failure 500 {object} map[string]string
 // @Router /lesson/{lessonid} [patch]
 func (h *LessonEditController) Execute(c echo.Context) error {
 

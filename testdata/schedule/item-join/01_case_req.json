@@ -1,0 +1,6 @@
+{
+  "comment": "正常系：スケジュール編集アイテム移動 リストからルームへ",
+  "history_index": 5,
+  "join_from_identifier": "identifier_lesson_1_from",
+  "join_to_identifier": "identifier_lesson_1"
+}

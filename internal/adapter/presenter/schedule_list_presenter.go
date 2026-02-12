@@ -31,7 +31,6 @@ type (
 	ScheduleListDTO struct {
 		ScheduleID         int       `json:"schedule_id"`
 		Title              string    `json:"title"`
-		Status             string    `json:"status"`
 		CreatedUserName    string    `json:"created_user_name"`
 		LastUpdateUserName string    `json:"last_update_user_name"`
 		LastUpdateDateTime time.Time `json:"last_update_date_time"`
@@ -45,7 +44,6 @@ func (h *ScheduleListPresenter) Present(result *schedulelist.ScheduleListQueryOu
 		return &ScheduleListDTO{
 			ScheduleID:         item.ID,
 			Title:              item.Title,
-			Status:             item.Status,
 			CreatedUserName:    item.CreateUserName,
 			LastUpdateUserName: item.LastUpdateUserName,
 			LastUpdateDateTime: item.UpdatedAt,

@@ -33,3 +33,5 @@ phpmyadmin/sessions/*
 bin/golangci-lint
 
 testdata/csv/
+.hypothesis/
+venv/
