@@ -140,10 +140,21 @@ READ COMMITTED を採用する理由:
 
 本プロジェクトは Docker および Docker Compose を利用して、アプリケーションの実行環境（Go, MySQL など）を構築する。
 
-### コンテナ起動
+### 環境変数ファイル作成
+```bash
+cp internal/configs/.env.example internal/configs/.env
+```
 
+### コンテナ起動
 ```bash
 docker-compose up -d
+```
+
+### マイグレーション実行
+アプリケーション起動前に、データベースマイグレーションを実行する。
+
+```bash
+docker-compose exec app-dev atlas migrate apply --env dev -c file://db/atlas.hcl
 ```
 
 ### アプリケーション実行  
