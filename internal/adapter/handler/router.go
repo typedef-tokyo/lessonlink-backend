@@ -8,48 +8,52 @@ import (
 
 	"github.com/labstack/echo/v4"
 	middleware "github.com/labstack/echo/v4/middleware"
-	"github.com/typedef-tokyo/lessonlink-backend/internal/adapter/controller"
 	session_util "github.com/typedef-tokyo/lessonlink-backend/internal/adapter/utility"
 	"github.com/typedef-tokyo/lessonlink-backend/internal/configs"
-	logWriter "github.com/typedef-tokyo/lessonlink-backend/internal/infrastructure/logger"
 	"github.com/typedef-tokyo/lessonlink-backend/internal/infrastructure/server"
+	campus_controller "github.com/typedef-tokyo/lessonlink-backend/internal/modules/campus/adapter/controller"
+	lesson_controller "github.com/typedef-tokyo/lessonlink-backend/internal/modules/lesson/adapter/controller"
+	room_controller "github.com/typedef-tokyo/lessonlink-backend/internal/modules/room/adapter/controller"
+	schedule_controller "github.com/typedef-tokyo/lessonlink-backend/internal/modules/schedule/adapter/controller"
+	"github.com/typedef-tokyo/lessonlink-backend/internal/modules/session/adapter/handler"
+	user_controller "github.com/typedef-tokyo/lessonlink-backend/internal/modules/user/adapter/controller"
 	"github.com/typedef-tokyo/lessonlink-backend/internal/pkg/log"
-	"github.com/typedef-tokyo/lessonlink-backend/internal/usecase/repository"
+	logWriter "github.com/typedef-tokyo/lessonlink-backend/internal/platform/logger"
 )
 
 func NewRouter(
 	sever *server.Server,
 	env configs.EnvConfig,
 	logWriter *logWriter.LogWriter,
-	sessionRepository repository.SessionRepository,
-	campusListController controller.ICampusListController,
-	lessonListController controller.ILessonListController,
-	lessonAddController controller.ILessonAddController,
-	lessonEditController controller.ILessonEditController,
-	roomListController controller.IRoomListController,
-	roomEditController controller.IRoomEditController,
-	loginUserGetController controller.ILoginUserGetController,
-	scheduleCreateController controller.IScheduleCreateController,
-	scheduleDeleteController controller.IScheduleDeleteController,
-	scheduleDuplicateController controller.IScheduleDuplicateController,
-	scheduleGetController controller.IScheduleGetController,
-	scheduleItemDivideController controller.IScheduleItemDivideController,
-	scheduleItemJoinController controller.IScheduleItemJoinController,
-	scheduleItemMoveController controller.IScheduleItemMoveController,
-	scheduleItemReturnListController controller.IScheduleItemReturnListController,
-	scheduleItemShiftController controller.IScheduleItemShiftController,
-	scheduleListController controller.IScheduleListController,
-	scheduleSaveController controller.IScheduleSaveController,
-	scheduleSaveTitleController controller.IScheduleSaveTitleController,
-	scheduleTimeEditController controller.IScheduleTimeEditController,
-	invisibleRoomController controller.IInvisibleRoomController,
-	userListController controller.IUserListController,
-	userAddController controller.IUserAddController,
-	userDeleteController controller.IUserDeleteController,
-	userGetController controller.IUserGetController,
-	userLoginController controller.IUserLoginController,
-	userLogoutController controller.IUserLogoutController,
-	userUpdateController controller.IUserUpdateController,
+	sessionHandler handler.ISessionGetHandler,
+	campusListController campus_controller.ICampusListController,
+	lessonListController lesson_controller.ILessonListController,
+	lessonAddController lesson_controller.ILessonAddController,
+	lessonEditController lesson_controller.ILessonEditController,
+	roomListController room_controller.IRoomListController,
+	roomEditController room_controller.IRoomEditController,
+	scheduleCreateController schedule_controller.IScheduleCreateController,
+	scheduleDeleteController schedule_controller.IScheduleDeleteController,
+	scheduleDuplicateController schedule_controller.IScheduleDuplicateController,
+	scheduleGetController schedule_controller.IScheduleGetController,
+	scheduleItemDivideController schedule_controller.IScheduleItemDivideController,
+	scheduleItemJoinController schedule_controller.IScheduleItemJoinController,
+	scheduleItemMoveController schedule_controller.IScheduleItemMoveController,
+	scheduleItemReturnListController schedule_controller.IScheduleItemReturnListController,
+	scheduleItemShiftController schedule_controller.IScheduleItemShiftController,
+	scheduleListController schedule_controller.IScheduleListController,
+	scheduleSaveController schedule_controller.IScheduleSaveController,
+	scheduleSaveTitleController schedule_controller.IScheduleSaveTitleController,
+	scheduleTimeEditController schedule_controller.IScheduleTimeEditController,
+	invisibleRoomController schedule_controller.IInvisibleRoomController,
+	loginUserGetController user_controller.ILoginUserGetController,
+	userListController user_controller.IUserListController,
+	userAddController user_controller.IUserAddController,
+	userDeleteController user_controller.IUserDeleteController,
+	userGetController user_controller.IUserGetController,
+	userLoginController user_controller.IUserLoginController,
+	userLogoutController user_controller.IUserLogoutController,
+	userUpdateController user_controller.IUserUpdateController,
 ) *echo.Echo {
 
 	api := sever.Engine.Group("/api")
@@ -70,9 +74,9 @@ func NewRouter(
 				transactionID := c.Response().Header().Get(echo.HeaderXRequestID)
 
 				userID := -1
-				_userID, _, err := session_util.GetSessionData(c)
+				sessionUserID, _, err := session_util.GetSessionData(c)
 				if err == nil {
-					userID = _userID.Value()
+					userID = sessionUserID
 				}
 
 				level := log.LogLevelMap[status]
@@ -99,7 +103,7 @@ func NewRouter(
 
 	// -------認証必須-------------------
 	auth := api.Group("")
-	auth.Use(AuthRequiredMiddleware(env, sessionRepository, logWriter))
+	auth.Use(AuthRequiredMiddleware(env, sessionHandler, logWriter))
 
 	campus := auth.Group("/campus")
 	campus.GET("/list", campusListController.Execute)

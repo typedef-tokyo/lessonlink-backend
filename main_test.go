@@ -85,7 +85,6 @@ func Test_main(t *testing.T) {
 
 	// スケジュール一覧取得
 	runGolden(t, "/schedule/list/shibuya", "GET", true, "schedule/list")
-	// runGolden(t, "/schedule/list/shinagawa", "GET", false)
 
 	// スケジュール取得
 	runGolden(t, "/schedule/1", "GET", false, "schedule/get")
